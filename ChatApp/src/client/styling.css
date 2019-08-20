@@ -1,0 +1,44 @@
+own-message {
+    -fx-font-family: Verdana;
+    -fx-font-size: 11;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+    -fx-background-color:  #ffeeb8;
+    -fx-border-width: 5;
+ 	-fx-background-radius: 5 5 5 5;
+ 	-fx-padding: 5 5 5 5;
+
+}
+
+received-message {
+    -fx-background-color:  #0097c1;
+    -fx-border-width: 5;
+    -fx-border-radius: 10 10 10 10;
+ 	-fx-background-radius: 10 10 10 10;
+}
+
+status-message {
+    -fx-font-family: Verdana;
+    -fx-font-size: 11;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000;
+    -fx-background-color:  #ffeeb8;
+    -fx-border-width: 5;
+ 	-fx-background-radius: 5 5 5 5;
+ 	-fx-padding: 5 5 5 5;
+
+}
+
+received-text { 
+    -fx-font-family: Verdana;
+    -fx-font-size: 11;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+sent-text { 
+    -fx-font-family: Verdana;
+    -fx-font-size: 11;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}

@@ -1,0 +1,27 @@
+.text-area {
+    -fx-font-family: Verdana;
+    -fx-font-size: 11;
+    -fx-text-fill: #ffffff;
+
+}
+
+.text-area .content {
+    -fx-background-color: #ffffff;
+    -fx-border-width: 5;
+    -fx-border-colour: #000000;
+    -fx-border-radius: 10 10 10 10;
+ 	-fx-background-radius: 10 10 10 10;
+}
+
+.text-area .scroll-bar:vertical:disabled {
+	-fx-background-color: #ffffff;
+    -fx-opacity: 1;
+
+}
+
+.scroll-pane {
+    -fx-background-color: #eeeeee;
+    -fx-border-color: #eeeeee;
+    -fx-border-radius: 10 10 10 10;
+ 	-fx-background-radius: 10 10 10 10;
+}
