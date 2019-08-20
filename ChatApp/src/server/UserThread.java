@@ -1,4 +1,4 @@
-package com.server;
+package server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.HashSet;
+import java.util.Set;
 
  
 /**
@@ -19,10 +21,14 @@ public class UserThread extends Thread {
     private Socket socket;
     private ChatServer server;
     private PrintWriter writer;
+    private String username;
+    private Set<Integer> groupMembershipList;
  
     public UserThread(Socket socket, ChatServer server) {
         this.socket = socket;
         this.server = server;
+        groupMembershipList = new HashSet<Integer>();
+        groupMembershipList.add(0);
     }
  
     public void run() {
@@ -33,28 +39,20 @@ public class UserThread extends Thread {
             OutputStream output = socket.getOutputStream();
             writer = new PrintWriter(output, true);
  
+            username = reader.readLine();
+            
             printUsers();
- 
-            String userName = reader.readLine();
-            server.addUserName(userName);
- 
-            String serverMessage = "New user connected: " + userName;
-            server.broadcast(serverMessage, this);
  
             String clientMessage;
  
             do {
                 clientMessage = reader.readLine();
-                serverMessage = "[" + userName + "]: " + clientMessage;
-                server.broadcast(serverMessage, this);
+                server.broadcast(clientMessage, this);
  
             } while (!clientMessage.equals("bye"));
  
-            server.removeUser(userName, this);
+            server.removeUser(username, this);
             socket.close();
- 
-            serverMessage = userName + " has quitted.";
-            server.broadcast(serverMessage, this);
  
         } catch (IOException ex) {
             System.out.println("Error in UserThread: " + ex.getMessage());
@@ -66,10 +64,10 @@ public class UserThread extends Thread {
      * Sends a list of online users to the newly connected user.
      */
     void printUsers() {
-        if (server.hasUsers()) {
-            writer.println("Connected users: " + server.getUserNames());
+        if (server.hasUsers(this)) {
+            writer.println("ONLINE_STATUS-0-Connected users: " + server.getUserNames(0)+ "-server");
         } else {
-            writer.println("No other users connected");
+            writer.println("ONLINE_STATUS-0-No other users connected-server");
         }
     }
  
@@ -78,5 +76,35 @@ public class UserThread extends Thread {
      */
     void sendMessage(String message) {
         writer.println(message);
+    }
+    
+    void setUsername(String usrname) {
+    	username = usrname;
+    }
+    
+    String getUsername() {
+    	return username;
+    }
+    
+    void addGroupId(int id) {
+    	groupMembershipList.add(id);
+    }
+    
+    Set<Integer> getGroupIdList() {
+    	return groupMembershipList;
+    }
+    
+    boolean isGroupMember(int id) {
+    	for (Integer elem : groupMembershipList) {
+    		if (elem == id) {
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
+    public boolean equals(UserThread other)
+    {
+       return username == other.getUsername();
     }
 }
