@@ -22,16 +22,8 @@
    <children>
       <Pane layoutX="306.0" layoutY="487.0" prefHeight="110.0" prefWidth="474.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="487.0">
          <children>
-            <TextArea id="messageInput" fx:id="messageInput" layoutY="-6.0" prefHeight="118.0" prefWidth="428.0" promptText="Enter a message..." wrapText="true" />
-            <Button id="sendButton" layoutX="429.0" layoutY="35.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="43.0">
-               <graphic>
-                  <ImageView fitHeight="28.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Images/211870-32.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Button>
-            <Button id="attachButton" fx:id="sendButton" layoutX="429.0" layoutY="-6.0" mnemonicParsing="false" onAction="#handleSendAction" prefHeight="39.0" prefWidth="37.0">
+            <TextArea id="messageInput" fx:id="messageInput" layoutY="-7.0" prefHeight="119.0" prefWidth="428.0" promptText="Enter a message..." wrapText="true" />
+            <Button id="button-style" fx:id="sendButton" layoutX="429.0" layoutY="-6.0" mnemonicParsing="false" onAction="#handleSendAction" prefHeight="39.0" prefWidth="37.0" stylesheets="@styling.css">
                <graphic>
                   <ImageView fitHeight="28.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -44,9 +36,9 @@
       </Pane>
       <ScrollPane hbarPolicy="NEVER" layoutX="300.0" layoutY="66.0" prefHeight="414.0" prefWidth="475.0" vmax="10.0" vvalue="6.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="63.0">
          <content>
-          <AnchorPane maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefWidth="469.0" style="-fx-background-color:#ffffff;">
+          <AnchorPane maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="415.0" prefWidth="469.0" style="-fx-background-color:#ffffff;">
                <children>
-                  <VBox fx:id="messagePane" layoutY="7.0" maxHeight="1.7976931348623157E308" prefHeight="410.0" prefWidth="469.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="7.0">
+                  <VBox fx:id="messagePane" layoutY="7.0" maxHeight="1.7976931348623157E308" prefHeight="410.0" prefWidth="469.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <FlowPane alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="469.0">
                            <children>
@@ -71,7 +63,7 @@
                         </FlowPane>
                         <FlowPane alignment="CENTER_RIGHT" prefHeight="85.0" prefWidth="469.0">
                            <children>
-                              <TextFlow prefHeight="62.0" prefWidth="261.0" style="-fx-background-color: #0097c1; -fx-border-radius: 5 5 5 5; -fx-border-width: 5; -fx-background-radius: 20 20 0 20;" styleClass="received-message" stylesheets="@styling.css">
+                              <TextFlow prefHeight="62.0" prefWidth="261.0" style="-fx-background-color: #0097c1; -fx-border-radius: 5 5 5 5; -fx-border-width: 5; -fx-background-radius: 20 20 0 20;" stylesheets="@styling.css">
                                  <children>
                                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="I am going to be studying all weekend, please signal me if anyone needs a ride">
                                        <font>

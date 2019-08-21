@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import GUI.LoginManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -273,6 +274,11 @@ public class ChatController implements Initializable{
 
 	public void setUsername(String string) {
 		model.setUsername(string);
+		
+	}
+
+	public void initSession(LoginManager loginManager, String sessionID) {
+		// TODO Auto-generated method stub
 		
 	}
 }

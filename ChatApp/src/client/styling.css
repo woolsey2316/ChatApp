@@ -42,3 +42,9 @@ sent-text {
     -fx-text-fill: #000000;
     -fx-font-weight: bold;
 }
+
+.button {
+	-fx-border-width: 0;
+	-fx-border-color: #ffffff;
+	-fx-background-color: #ffffff;
+}
