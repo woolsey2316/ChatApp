@@ -2,6 +2,10 @@ package GUI;
 
 import java.util.List;
 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
+
 import client.ChatClient;
 import client.ChatController;
 import client.Transcript;
@@ -11,26 +15,33 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-
+@SpringBootApplication
 public class MainWindow extends Application {
 	public int groupId = 0;
 	private static ChatController chatController;
 	private ChatClient chatClient;
+	private ConfigurableApplicationContext context;
+	private Parent root;
 	
-	@Override
-	public void start(Stage primaryStage) {
-		try {
-			Parameters params = getParameters();
+	 @Override
+	    public void init() throws Exception {
+	        SpringApplicationBuilder builder = 
+	        		new SpringApplicationBuilder(MainWindow.class);
+			
+	        Parameters params = getParameters();
 	        List<String> args = params.getRaw();
 	        
 	        String hostname = args.get(0);
 	        int port = Integer.parseInt(args.get(1));
 	        ChatClient client = new ChatClient(hostname, port);
 	        client.setUserName(args.get(2));
-			
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../client/ChatGUI.fxml"));
-		    Parent root = loader.load();
-		    
+	        
+	        context = builder.run(getParameters().getRaw().toArray(new String[0]));
+	 
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("../client/ChatGUI.fxml"));
+	        root = loader.load();
+	        loader.setControllerFactory(context::getBean);
+	        
 		    ChatController controller = (ChatController)loader.getController();
 		    controller.setModel(new Transcript(args.get(2)));
 		    loader.setController(chatController);
@@ -40,6 +51,11 @@ public class MainWindow extends Application {
 	        client.setChatController(chatController);
 	        
 	        client.execute();
+	    }
+	 
+	@Override
+	public void start(Stage primaryStage) {
+		try {
 	        
 			Scene scene = new Scene(root,765,590);
 			scene.getStylesheets().add("client/styling.css");

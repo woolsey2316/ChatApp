@@ -20,44 +20,37 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="775.0" style="-fx-background-color: #EAEDF1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ChatController">
    <children>
-      <Pane layoutX="306.0" layoutY="487.0" prefHeight="110.0" prefWidth="474.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="487.0">
+      <Pane layoutX="296.0" layoutY="537.0" prefHeight="63.0" prefWidth="479.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="296.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="537.0">
          <children>
-            <TextArea id="messageInput" fx:id="messageInput" layoutY="-7.0" prefHeight="119.0" prefWidth="428.0" promptText="Enter a message..." wrapText="true" />
-            <Button id="button-style" fx:id="sendButton" layoutX="429.0" layoutY="-6.0" mnemonicParsing="false" onAction="#handleSendAction" prefHeight="39.0" prefWidth="37.0" stylesheets="@styling.css">
-               <graphic>
-                  <ImageView fitHeight="28.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Images/send.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
+            <TextArea id="messageInput" fx:id="messageInput" prefHeight="63.0" prefWidth="419.0" promptText="Enter a message..." stylesheets="@styling.css" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font></TextArea>
+            <Button fx:id="sendButton" alignment="CENTER" layoutX="419.0" mnemonicParsing="false" onAction="#handleSendAction" prefHeight="48.0" prefWidth="54.0" stylesheets="@styling.css" />
          </children>
       </Pane>
-      <ScrollPane hbarPolicy="NEVER" layoutX="300.0" layoutY="66.0" prefHeight="414.0" prefWidth="475.0" vmax="10.0" vvalue="6.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="63.0">
+      <ScrollPane id="chat" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutX="296.0" layoutY="66.0" prefHeight="474.0" prefWidth="479.0" style="-fx-background-color: #edf4ff;" stylesheets="@styling.css" vbarPolicy="ALWAYS" vmax="10.0" vvalue="6.0" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="296.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="63.0">
          <content>
-          <AnchorPane maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="415.0" prefWidth="469.0" style="-fx-background-color:#ffffff;">
+          <AnchorPane maxHeight="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="477.0" prefWidth="471.0" style="-fx-background-color:#ffffff;">
                <children>
-                  <VBox fx:id="messagePane" layoutY="7.0" maxHeight="1.7976931348623157E308" prefHeight="410.0" prefWidth="469.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <VBox fx:id="messagePane" maxHeight="1.7976931348623157E308" prefHeight="440.0" prefWidth="471.0" style="-fx-background-color: #e4e5f5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <FlowPane alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="469.0">
+                        <FlowPane alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="483.0">
                            <children>
-                              <ImageView fitHeight="56.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@Images/iconfinder_JD-02_2625525.png" />
-                                 </image>
-                              </ImageView>
-                              <TextFlow prefHeight="58.0" prefWidth="200.0" style="-fx-background-color: #ffeeb8; -fx-border-radius: 30 30 30 30; -fx-border-width: 5; -fx-background-radius: 20 20 20 0;">
+                              <TextFlow prefHeight="58.0" prefWidth="200.0" style="-fx-background-color: #ffffff; -fx-border-radius: 30 30 30 30; -fx-border-width: 5; -fx-background-radius: 20 20 20 0;">
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hello Jessica">
                                        <font>
-                                          <Font name="Verdana Bold" size="11.0" />
+                                          <Font name="Verdana" size="12.0" />
                                        </font>
                                     </Text>
                                  </children>
                                  <padding>
-                                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                    <Insets bottom="7.0" left="15.0" right="20.0" top="7.0" />
                                  </padding>
+                                 <FlowPane.margin>
+                                    <Insets left="15.0" />
+                                 </FlowPane.margin>
                               </TextFlow>
                            </children>
                         </FlowPane>
@@ -67,19 +60,20 @@
                                  <children>
                                     <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="I am going to be studying all weekend, please signal me if anyone needs a ride">
                                        <font>
-                                          <Font name="Verdana Bold" size="11.0" />
+                                          <Font name="Verdana" size="12.0" />
                                        </font>
                                     </Text>
                                  </children>
                                  <padding>
-                                    <Insets bottom="5.0" left="20.0" right="20.0" top="10.0" />
+                                    <Insets bottom="7.0" left="15.0" right="20.0" top="7.0" />
                                  </padding>
                                  <FlowPane.margin>
-                                    <Insets />
-                                 </FlowPane.margin></TextFlow>
-                              <ImageView fitHeight="56.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
+                                    <Insets right="10.0" />
+                                 </FlowPane.margin>
+                              </TextFlow>
+                              <ImageView id="avatar" fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" styleClass="styling.css">
                                  <image>
-                                    <Image url="@Images/iconfinder_JD-08_2625520.png" />
+                                    <Image url="@Images/avatar2.png" />
                                  </image>
                                  <FlowPane.margin>
                                     <Insets right="10.0" />
@@ -100,16 +94,16 @@
             <Line endX="20.0" layoutX="29.0" layoutY="41.0" startX="-4.5" stroke="WHITE" strokeWidth="3.5" />
          </children>
       </Pane>
-      <AnchorPane layoutX="75.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="476.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="75.0" layoutY="-2.0" prefHeight="602.0" prefWidth="221.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="75.0" AnchorPane.rightAnchor="479.0" AnchorPane.topAnchor="-2.0">
          <children>
-            <ScrollPane hbarPolicy="NEVER" prefHeight="600.0" prefWidth="224.0" style="-fx-background-color: #272E36;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ScrollPane hbarPolicy="NEVER" prefHeight="600.0" prefWidth="224.0" style="-fx-background-color: #272E36;" stylesheets="@styling.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
                <content>
-                  <Pane prefHeight="600.0" prefWidth="225.0" style="-fx-background-color: #272E36;">
+                  <Pane id="friendList" prefHeight="624.0" prefWidth="219.0" style="-fx-background-color: #272E36;" styleClass="scroll-bar">
                      <children>
                         <TextField layoutX="19.0" layoutY="23.0" promptText="Search" />
-                        <Pane id="groupPane" layoutX="1.0" layoutY="68.0" onMouseClicked="#mouseClicked" prefHeight="77.0" prefWidth="224.0">
+                        <Pane id="groupPane" layoutY="68.0" onMouseClicked="#mouseClicked" prefHeight="77.0" prefWidth="210.0">
                            <children>
-                              <Line id="topLine1" endX="125.0" layoutX="80.0" startX="-82.0" stroke="#363a45" strokeWidth="2.0" />
+                              <Line id="topLine1" endX="135.0" layoutX="80.0" startX="-80.0" stroke="#535968" strokeLineJoin="ROUND" strokeMiterLimit="56.0" strokeWidth="2.0" />
                               <ImageView fitHeight="75.0" fitWidth="55.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@Images/309041-128.png" />
@@ -120,40 +114,54 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <Line id="bottomLine1" endX="125.0" layoutX="80.0" layoutY="77.0" startX="-82.0" stroke="#363a45" strokeWidth="2.0" />
+                              <Line id="bottomLine1" endX="135.0" layoutX="80.0" layoutY="77.0" startX="-82.0" stroke="#535968" strokeWidth="2.0" />
                               <Line endY="60.0" startY="20.0" stroke="#2fa7ed" strokeWidth="3.0" />
                            </children>
                         </Pane>
-                        <Pane layoutY="231.0" onMouseClicked="#mouseClicked" onMouseDragged="#mouseDrag" prefHeight="84.0" prefWidth="210.0">
+                        <Pane layoutY="144.0" onMouseClicked="#mouseClicked" onMouseDragged="#mouseDrag" prefHeight="84.0" prefWidth="210.0">
                            <children>
-                              <Line endX="35.0" layoutX="84.0" startX="-85.0" stroke="#363a45" strokeWidth="2.0" />
-                              <Label id="fullName2" layoutX="60.0" layoutY="14.0" text="valentine" textFill="#f8f8f8">
+                              <Label id="fullName2" layoutX="60.0" layoutY="20.0" text="John Meeth" textFill="#f8f8f8">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <Label id="subtitle2" layoutX="10.0" layoutY="51.0" prefHeight="24.0" prefWidth="192.0" text="You are connected to messenger" textFill="#6a6d71" />
-                              <ImageView fitHeight="56.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+                              <Label layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="192.0" text="You are connected to messenger" textFill="#a5aab1" />
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Images/iconfinder_JD-08_2625520.png" />
+                                    <Image url="@Images/avatar3.png" />
                                  </image>
                               </ImageView>
-                              <Line endX="35.0" layoutX="82.0" layoutY="84.0" startX="-81.5" stroke="#363a45" strokeWidth="2.0" />
+                              <Line endX="35.0" layoutX="82.0" layoutY="84.0" startX="-81.5" stroke="#535968" strokeWidth="2.0" />
                            </children>
                         </Pane>
-                        <Pane layoutY="145.0" onMouseClicked="#mouseClicked" prefHeight="85.0" prefWidth="210.0">
+                        <Pane layoutY="315.0" onMouseClicked="#mouseClicked" onMouseDragged="#mouseDrag" prefHeight="84.0" prefWidth="210.0">
                            <children>
-                              <Line endX="113.0" layoutX="83.0" startX="-81.0" stroke="#363a45" strokeWidth="2.0" />
-                              <Label id="fullName1" layoutX="60.0" layoutY="14.0" text="Devon McGregor" textFill="#f8f8f8">
+                              <Label id="fullName2" layoutX="60.0" layoutY="20.0" text="Valentine Ford" textFill="#f8f8f8">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <Label id="subtitle1" layoutX="10.0" layoutY="51.0" prefHeight="24.0" prefWidth="192.0" text="You are connected to messenger" textFill="#6a6d71" />
-                              <Line endX="35.0" endY="1.414215087890625" layoutX="84.0" layoutY="85.0" startX="-85.0" stroke="#363a45" strokeWidth="2.0" />
-                              <ImageView fitHeight="56.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                              <Label layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="192.0" text="You are connected to messenger" textFill="#a5aab1" />
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@Images/iconfinder_JD-02_2625525.png" />
+                                    <Image url="@Images/avatar2.png" />
+                                 </image>
+                              </ImageView>
+                              <Line endX="35.0" layoutX="82.0" layoutY="84.0" startX="-81.5" stroke="#535968" strokeWidth="2.0" />
+                           </children>
+                        </Pane>
+                        <Pane layoutY="229.0" onMouseClicked="#mouseClicked" prefHeight="85.0" prefWidth="210.0">
+                           <children>
+                              <Label id="fullName1" layoutX="60.0" layoutY="20.0" text="Devon McGregor" textFill="#f8f8f8">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="60.0" prefHeight="24.0" prefWidth="192.0" text="You are connected to messenger" textFill="#a5aab1" />
+                              <Line endX="35.0" layoutX="84.0" layoutY="85.0" startX="-85.0" stroke="#535968" strokeWidth="2.0" />
+                              <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/avatar1.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -164,10 +172,10 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <Pane layoutX="300.0" prefHeight="64.0" prefWidth="475.0" style="-fx-background-color:#ffffff;" AnchorPane.bottomAnchor="536.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="296.0" prefHeight="64.0" prefWidth="479.0" style="-fx-background-color: #e4e5f5;" AnchorPane.bottomAnchor="536.0" AnchorPane.leftAnchor="296.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Separator layoutX="295.0" orientation="VERTICAL" prefHeight="63.0" prefWidth="6.0" />
-            <Separator layoutY="62.0" prefHeight="3.0" prefWidth="475.0" />
+            <Separator layoutY="62.0" prefHeight="3.0" prefWidth="479.0" />
             <Text fill="#656262" layoutX="98.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="is typing...">
                <font>
                   <Font name="Verdana" size="12.0" />

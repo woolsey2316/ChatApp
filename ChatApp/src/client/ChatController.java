@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -39,6 +40,8 @@ public class ChatController implements Initializable{
 	public VBox messagePane;
 	@FXML
 	public TextArea editUsername;
+	@FXML
+	public ImageView sendimage;
 	public int groupId = 0;
 	
 	public ChatController() {
@@ -96,28 +99,26 @@ public class ChatController implements Initializable{
     	FlowPane flowPane = new FlowPane();
     	flowPane.setAlignment(Pos.TOP_LEFT);
     	flowPane.setMinHeight(80);
+    	
     	Text text = new Text();
         text.setText(message);
         text.getStyleClass().add("sent-message");
         
-        Font font = Font.font("verdana", FontWeight.BOLD, 11);
+        Font font = Font.font("verdana", FontWeight.NORMAL, 12);
         text.setFont(font);
         
         final TextFlow textFlow = new TextFlow(text);
         textFlow.setPrefWidth(300);
         textFlow.setPrefHeight(30);
         textFlow.setPadding(new Insets(10,10,10,10));
+    	flowPane.setMargin(textFlow, new Insets(0,0,0,15));
         
-        Background background = new Background(new BackgroundFill(Color.rgb(255, 238, 184), 
+        Background background = new Background(new BackgroundFill(Color.rgb(255, 255, 255), 
         		new CornerRadii(20, 20, 20, 0, false), Insets.EMPTY));
         textFlow.setBackground(background);
     	
-    	Image img = new Image("client/images/iconfinder_JD-02_2625525.png");
-    	ImageView imgview = new ImageView(img);
-    	imgview.setFitHeight(60);
-    	imgview.setFitWidth(60);
-    	
-    	flowPane.getChildren().addAll(imgview,textFlow);
+    	flowPane.getChildren().add(textFlow);
+
     	messagePane.getChildren().add(flowPane);
 		
 	}
@@ -140,7 +141,7 @@ public class ChatController implements Initializable{
         textFlow.setPrefHeight(30);
         textFlow.setPadding(new Insets(10,10,10,10));
     	
-    	Image img = new Image("client/images/iconfinder_JD-02_2625525.png");
+    	Image img = new Image("client/images/avatar1.png");
     	ImageView imgview = new ImageView(img);
     	imgview.setFitHeight(60);
     	imgview.setFitWidth(60);
@@ -173,7 +174,7 @@ public class ChatController implements Initializable{
         		new CornerRadii(20, 20, 0, 20, false), Insets.EMPTY));
         textFlow.setBackground(background);
     	
-    	Image img = new Image("client/images/iconfinder_JD-02_2625525.png");
+    	Image img = new Image("client/images/avatar1.png");
     	ImageView imgview = new ImageView(img);
     	imgview.setFitHeight(60);
     	imgview.setFitWidth(60);
@@ -247,6 +248,18 @@ public class ChatController implements Initializable{
 	    		+ "-" + model.getUsername());
 	    messageInput.setText("");
 	}
+	/*
+	
+	@FXML
+	private void mouseHoveredOver(ActionEvent event) {
+		sendimage.setStyle("-fx-background-color: BLACK");
+	}
+	
+	@FXML
+	private void mouseLostHover(ActionEvent event) {
+		sendimage.setStyle("-fx-background-color: BLACK");
+	}
+	*/
 	
 	public void mouseDrag() {
 		
