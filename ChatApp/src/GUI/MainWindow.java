@@ -2,13 +2,17 @@ package GUI;
 
 import java.util.List;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import client.ChatClient;
 import client.ChatController;
-import client.Transcript;
+import dao.Transcript;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -16,11 +20,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 @SpringBootApplication
+@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class MainWindow extends Application {
 	public int groupId = 0;
 	private static ChatController chatController;
 	private ChatClient chatClient;
-	private ConfigurableApplicationContext context;
+	private ClassPathXmlApplicationContext context;
 	private Parent root;
 	
 	 @Override
@@ -34,16 +39,18 @@ public class MainWindow extends Application {
 	        String hostname = args.get(0);
 	        int port = Integer.parseInt(args.get(1));
 	        ChatClient client = new ChatClient(hostname, port);
-	        client.setUserName(args.get(2));
 	        
-	        context = builder.run(getParameters().getRaw().toArray(new String[0]));
+	        context = new ClassPathXmlApplicationContext("spring.xml");
+	        //context = builder.run(getParameters().getRaw().toArray(new String[0]));
 	 
 	        FXMLLoader loader = new FXMLLoader(getClass().getResource("../client/ChatGUI.fxml"));
 	        root = loader.load();
 	        loader.setControllerFactory(context::getBean);
 	        
 		    ChatController controller = (ChatController)loader.getController();
-		    controller.setModel(new Transcript(args.get(2)));
+		    Transcript transcript = context.getBean(Transcript.class);
+		    transcript.setUsername(args.get(2));
+		    controller.setModel(transcript);
 		    loader.setController(chatController);
 		    
 		    chatController = controller;
@@ -83,7 +90,6 @@ public class MainWindow extends Application {
         if (args.length < 2) return;
         
         Application.launch(MainWindow.class, args);
-
 
     }
 

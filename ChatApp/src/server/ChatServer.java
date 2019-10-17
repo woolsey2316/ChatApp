@@ -110,10 +110,14 @@ public class ChatServer {
      * currently connected user)
      */
     boolean hasUsers(UserThread itself) {
+    	//for each chat room
         for (Set<UserThread> elem : userThreads.values()) {
         	if (!elem.isEmpty()) {
-        		if (elem.equals(itself)) {
-        			return true;
+        		//for each person in a single chatroom
+        		for (UserThread el : elem) {
+	        		if (el.equals(itself)) {
+	        			return true;
+	        		}
         		}
         	}
         }

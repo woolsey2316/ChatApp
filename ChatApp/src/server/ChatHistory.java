@@ -3,7 +3,7 @@ package server;
 import java.util.HashMap;
 import java.util.List;
 
-import client.Message;
+import model.Message;
 
 public class ChatHistory {
 	

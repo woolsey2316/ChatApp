@@ -30,7 +30,7 @@ public class WriteThread extends Thread {
     }
  
     public void run() {
-    	writer.println(client.getUsername());
+    	writer.println(client.getChatController().getUsername());
  
         do {
         	Queue<String> messageQueue = client.getChatController().

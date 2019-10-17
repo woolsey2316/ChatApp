@@ -1,17 +1,16 @@
 package client;
 
-
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 import GUI.LoginManager;
+import dao.Transcript;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,6 +30,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
+import model.Message;
 
 public class ChatController implements Initializable{
 	Transcript model;
@@ -58,12 +58,13 @@ public class ChatController implements Initializable{
 
 	public void receiveMessage(String response, long date) {
         String[] parts = response.split("-");
-        String messageType = parts[0];
-        String chatGroupId = parts[1];
-        String message = parts[2];
-        String userName = parts[3];
-        model.addMessage(new Message(userName, message, date, messageType),
-        		Integer.parseInt(chatGroupId));
+        Message message = new Message();
+        message.setMessageType(parts[0]);
+        message.setChatroomId(Integer.parseInt(parts[1]));
+        message.setContent(parts[2]);
+        message.setSender(parts[3]);
+        message.setDate(date);
+        model.save(message);
 		
 	}
 
@@ -123,7 +124,7 @@ public class ChatController implements Initializable{
 		
 	}
 	
-	//normal message sent
+	// normal message sent
 	public void displayConversation(String message) {
 		String[] parts = message.split("-");
 		
@@ -234,6 +235,10 @@ public class ChatController implements Initializable{
 		model.setUsername(editUsername.getText());
 		
 	}
+ 
+    public String getUsername() {
+    	return model.getUsername();
+    }
 	
 	public String getText() {
 		return messageInput.getText() ;

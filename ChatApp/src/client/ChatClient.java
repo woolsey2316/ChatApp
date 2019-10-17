@@ -17,7 +17,6 @@ import javafx.application.Application;
 public class ChatClient {
     private String hostname;
     private int port;
-	private String userName;
     private List<Integer> chatGroupMemberships;
     private int chatGroupId;
     private boolean hasExited;
@@ -52,14 +51,6 @@ public class ChatClient {
     
     List<Integer> getChatGroupMembershipList() {
     	return chatGroupMemberships;
-    }
- 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
- 
-    public String getUsername() {
-        return userName;
     }
     
     public int getChatGroupId() {
