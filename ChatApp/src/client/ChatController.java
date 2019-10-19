@@ -11,9 +11,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Border;
@@ -42,6 +44,8 @@ public class ChatController implements Initializable{
 	public TextArea editUsername;
 	@FXML
 	public ImageView sendimage;
+	@FXML
+	public Pane chatroomPane;
 	public int groupId = 0;
 	
 	public ChatController() {
@@ -99,8 +103,7 @@ public class ChatController implements Initializable{
 		
     	FlowPane flowPane = new FlowPane();
     	flowPane.setAlignment(Pos.TOP_LEFT);
-    	flowPane.setMinHeight(80);
-    	
+    	flowPane.setPadding(new Insets(10,0,10,0));
     	Text text = new Text();
         text.setText(message);
         text.getStyleClass().add("sent-message");
@@ -130,7 +133,7 @@ public class ChatController implements Initializable{
 		
     	FlowPane flowPane = new FlowPane();
     	flowPane.setAlignment(Pos.TOP_RIGHT);
-    	flowPane.setMinHeight(80);
+    	flowPane.setPadding(new Insets(10,0,10,0));
     	Text text = new Text();
         text.setText(message);
         
@@ -156,7 +159,7 @@ public class ChatController implements Initializable{
 	public void displayConversation(Message message) {
     	FlowPane flowPane = new FlowPane();
     	flowPane.setAlignment(Pos.TOP_RIGHT);
-    	flowPane.setMinHeight(80);
+    	flowPane.setPadding(new Insets(10,0,10,0));
     	
     	Text text = new Text();
         text.setText(message.getContent());
@@ -189,7 +192,7 @@ public class ChatController implements Initializable{
 	public void displayStatusMessage(Message message) {
 		FlowPane flowPane = new FlowPane();
     	flowPane.setAlignment(Pos.CENTER);
-    	flowPane.setMinHeight(80);
+    	flowPane.setPadding(new Insets(10,0,10,0));
     	
     	Text text = new Text();
         text.setText(message.getContent());
@@ -253,18 +256,18 @@ public class ChatController implements Initializable{
 	    		+ "-" + model.getUsername());
 	    messageInput.setText("");
 	}
-	/*
 	
 	@FXML
-	private void mouseHoveredOver(ActionEvent event) {
-		sendimage.setStyle("-fx-background-color: BLACK");
+	private void mouseEntered(MouseEvent e) {
+		((Pane) e.getSource()).setBackground(new Background(
+				new BackgroundFill(Color.web("#333c47"), CornerRadii.EMPTY, Insets.EMPTY)));
 	}
 	
 	@FXML
-	private void mouseLostHover(ActionEvent event) {
-		sendimage.setStyle("-fx-background-color: BLACK");
+	private void mouseExited(MouseEvent e) {
+		((Pane) e.getSource()).setBackground(new Background(
+				new BackgroundFill(Color.web("#272E36"), CornerRadii.EMPTY, Insets.EMPTY)));
 	}
-	*/
 	
 	public void mouseDrag() {
 		
